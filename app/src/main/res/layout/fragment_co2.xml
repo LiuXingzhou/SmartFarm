@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/co2beijng"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fc_tv_co2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="当前CO2浓度：--"
+                android:textColor="@color/second_text_color1"
+                android:textSize="@dimen/text_size"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/fc_tv_min_max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CO2设定范围:null~~null"
+                android:textColor="@color/second_text_color2"
+                android:textSize="@dimen/text_size"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/fc_ib_blower"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/dakaifengshan"/>
+
+        <ImageButton
+            android:id="@+id/fc_ib_road_lamp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/dakaiguangzhao"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/fc_ib_water_pump"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/dakaishui"/>
+
+        <ImageButton
+            android:id="@+id/fc_ib_buzzer"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/dakaibaojing"/>
+
+    </LinearLayout>
+</LinearLayout>

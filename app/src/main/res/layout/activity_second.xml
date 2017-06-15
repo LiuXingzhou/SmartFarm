@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.islxz.smartfarm.activity.SecondActivity">
+
+    <RelativeLayout
+        android:id="@+id/as_rl"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageButton
+            android:id="@+id/as_ib_back"
+            android:layout_width="15dp"
+            android:layout_height="27dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/fanhuianniu"/>
+
+        <TextView
+            android:id="@+id/as_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="CO2详情"
+            android:textColor="@color/title_text_color"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/parting_line"/>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/as_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/as_rl"></FrameLayout>
+
+</RelativeLayout>

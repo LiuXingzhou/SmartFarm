@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bar">25dp</dimen>
+    <dimen name="title">48dp</dimen>
+    <dimen name="menu">48dp</dimen>
+
+    <dimen name="title_text_size">18sp</dimen>
+    <dimen name="label_text_size">16sp</dimen>
+    <dimen name="text_size">14sp</dimen>
+</resources>
