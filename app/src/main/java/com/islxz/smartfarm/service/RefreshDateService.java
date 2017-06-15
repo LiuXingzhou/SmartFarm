@@ -34,8 +34,6 @@ public class RefreshDateService extends Service {
     Intent intent = new Intent(HttpUrl.REFRESH_OK);
     Intent intent1 = new Intent(HttpUrl.REFRESH_ERROR);
 
-    private final int REFRESH_TIME = 500;
-
     @Nullable
     @Override
 
@@ -78,7 +76,7 @@ public class RefreshDateService extends Service {
                         }
                     });
                     try {
-                        Thread.sleep(REFRESH_TIME);
+                        Thread.sleep(1500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -108,7 +106,7 @@ public class RefreshDateService extends Service {
                         }
                     });
                     try {
-                        Thread.sleep(REFRESH_TIME);
+                        Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -138,7 +136,7 @@ public class RefreshDateService extends Service {
                         }
                     });
                     try {
-                        Thread.sleep(REFRESH_TIME);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

@@ -16,4 +16,5 @@
     <color name="hui_text_color">#bdbdbd</color>
     <color name="second_text_color1">#e29c00</color>
     <color name="second_text_color2">#e29c00</color>
+    <color name="setting_backgroud">#f6f6f6</color>
 </resources>

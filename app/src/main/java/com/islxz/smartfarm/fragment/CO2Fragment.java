@@ -31,8 +31,6 @@ public class CO2Fragment extends Fragment implements View.OnClickListener {
     private TextView mTextView1;
     private TextView mTextView2;
     private ImageButton mBlowerIB;
-    private ImageButton mRoadLampIB;
-    private ImageButton mWaterPumpIB;
     private ImageButton mBuzzerIB;
 
     private Control mControl;
@@ -52,12 +50,8 @@ public class CO2Fragment extends Fragment implements View.OnClickListener {
         mTextView1 = view.findViewById(R.id.fc_tv_co2);
         mTextView2 = view.findViewById(R.id.fc_tv_min_max);
         mBlowerIB = view.findViewById(R.id.fc_ib_blower);
-        mRoadLampIB = view.findViewById(R.id.fc_ib_road_lamp);
-        mWaterPumpIB = view.findViewById(R.id.fc_ib_water_pump);
         mBuzzerIB = view.findViewById(R.id.fc_ib_buzzer);
         mBlowerIB.setOnClickListener(this);
-        mRoadLampIB.setOnClickListener(this);
-        mWaterPumpIB.setOnClickListener(this);
         mBuzzerIB.setOnClickListener(this);
         mControl = new Control();
         mControl.setBlower(0);
@@ -85,16 +79,6 @@ public class CO2Fragment extends Fragment implements View.OnClickListener {
         else
             mBlowerIB.setBackgroundResource(R.drawable.dakaifengshan2);
 
-        if (mControl.getRoadlamp() == 0)
-            mRoadLampIB.setBackgroundResource(R.drawable.dakaiguangzhao);
-        else
-            mRoadLampIB.setBackgroundResource(R.drawable.dakaiguangzhao2);
-
-        if (mControl.getWaterPump() == 0)
-            mWaterPumpIB.setBackgroundResource(R.drawable.dakaishui);
-        else
-            mWaterPumpIB.setBackgroundResource(R.drawable.dakaishui2);
-
         if (mControl.getBuzzer() == 0)
             mBuzzerIB.setBackgroundResource(R.drawable.dakaibaojing);
         else
@@ -106,12 +90,6 @@ public class CO2Fragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.fc_ib_blower:
                 Utility.openOrShut("Blower", mControl, ip, getContext());
-                break;
-            case R.id.fc_ib_road_lamp:
-                Utility.openOrShut("Roadlamp", mControl, ip, getContext());
-                break;
-            case R.id.fc_ib_water_pump:
-                Utility.openOrShut("WaterPump", mControl, ip, getContext());
                 break;
             case R.id.fc_ib_buzzer:
                 Utility.openOrShut("Buzzer", mControl, ip, getContext());

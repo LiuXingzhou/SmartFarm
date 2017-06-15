@@ -56,13 +56,6 @@
             android:layout_margin="5dp"
             android:background="@drawable/dakaifengshan"/>
 
-        <ImageButton
-            android:id="@+id/fc_ib_road_lamp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/dakaiguangzhao"/>
-
     </LinearLayout>
 
     <LinearLayout
@@ -72,13 +65,6 @@
         android:layout_marginRight="20dp"
         android:gravity="center"
         android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/fc_ib_water_pump"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/dakaishui"/>
 
         <ImageButton
             android:id="@+id/fc_ib_buzzer"

@@ -194,11 +194,8 @@ public class SmartFarmActivity extends AppCompatActivity implements View.OnClick
             if (action.equals(HttpUrl.REFRESH_ERROR)) {
 //                Toast.makeText(context, "数据加载失败", Toast.LENGTH_SHORT).show();
             } else if (action.equals(HttpUrl.REFRESH_OK)) {
-                //传感器
-                String date1 = intent.getStringExtra("sensor");
-                String date2 = intent.getStringExtra("config");
-                Sensor sensor = Utility.handleSensorResponse(date1);
-                Config config = Utility.handleConfigResponse(date2);
+                Sensor sensor = Utility.handleSensorResponse(intent.getStringExtra("sensor"));
+                Config config = Utility.handleConfigResponse(intent.getStringExtra("config"));
                 if (mHomeFragment != null)
                     mHomeFragment.initView(sensor, config);
             }

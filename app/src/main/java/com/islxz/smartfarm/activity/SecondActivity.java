@@ -14,9 +14,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.islxz.smartfarm.R;
+import com.islxz.smartfarm.fragment.AboutFragment;
+import com.islxz.smartfarm.fragment.AirControlFragment;
 import com.islxz.smartfarm.fragment.AirFragment;
+import com.islxz.smartfarm.fragment.CO2ControlFragment;
 import com.islxz.smartfarm.fragment.CO2Fragment;
+import com.islxz.smartfarm.fragment.LightControlFragment;
 import com.islxz.smartfarm.fragment.LightFragment;
+import com.islxz.smartfarm.fragment.SmartControlFragment;
+import com.islxz.smartfarm.fragment.SoilControlFragment;
 import com.islxz.smartfarm.fragment.SoilFragment;
 import com.islxz.smartfarm.gson.Config;
 import com.islxz.smartfarm.gson.Control;
@@ -34,6 +40,14 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private LightFragment mLightFragment;
     private SoilFragment mSoilFragment;
     private AirFragment mAirFragment;
+
+    private SmartControlFragment mSmartControlFragment;
+    private AboutFragment mAboutFragment;
+
+    private CO2ControlFragment mCO2ControlFragment;
+    private LightControlFragment mLightControlFragment;
+    private AirControlFragment mAirControlFragment;
+    private SoilControlFragment mSoilControlFragment;
 
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
@@ -84,6 +98,42 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                     mAirFragment = new AirFragment();
                 mFragmentTransaction.replace(R.id.as_fl, mAirFragment);
                 break;
+            case 4:
+                if (mSmartControlFragment == null)
+                    mSmartControlFragment = new SmartControlFragment();
+                mFragmentTransaction.replace(R.id.as_fl, mSmartControlFragment);
+                mTitleTV.setText("手动控制");
+                break;
+            case 5:
+                if (mAboutFragment == null)
+                    mAboutFragment = new AboutFragment();
+                mFragmentTransaction.replace(R.id.as_fl, mAboutFragment);
+                mTitleTV.setText("关于我们");
+                break;
+            case 6:
+                if (mCO2ControlFragment == null)
+                    mCO2ControlFragment = new CO2ControlFragment();
+                mFragmentTransaction.replace(R.id.as_fl, mCO2ControlFragment);
+                mTitleTV.setText("阈值设置");
+                break;
+            case 7:
+                if (mLightControlFragment == null)
+                    mLightControlFragment = new LightControlFragment();
+                mFragmentTransaction.replace(R.id.as_fl, mLightControlFragment);
+                mTitleTV.setText("阈值设置");
+                break;
+            case 8:
+                if (mAirControlFragment == null)
+                    mAirControlFragment = new AirControlFragment();
+                mFragmentTransaction.replace(R.id.as_fl, mAirControlFragment);
+                mTitleTV.setText("阈值设置");
+                break;
+            case 9:
+                if (mSoilControlFragment == null)
+                    mSoilControlFragment = new SoilControlFragment();
+                mFragmentTransaction.replace(R.id.as_fl, mSoilControlFragment);
+                mTitleTV.setText("阈值设置");
+                break;
         }
         mFragmentTransaction.commit();
     }
@@ -104,7 +154,23 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        finish();
+        switch (current) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                finish();
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                startActivity(new Intent(this, SecondActivity.class).putExtra("select", 4));
+                finish();
+                break;
+        }
     }
 
     private class MyBroadcast extends BroadcastReceiver {
@@ -115,7 +181,6 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             if (action.equals(HttpUrl.REFRESH_ERROR)) {
 //                Toast.makeText(context, "数据加载失败", Toast.LENGTH_SHORT).show();
             } else if (action.equals(HttpUrl.REFRESH_OK)) {
-                //传感器
                 String date1 = intent.getStringExtra("sensor");
                 String date2 = intent.getStringExtra("config");
                 String date3 = intent.getStringExtra("control");
