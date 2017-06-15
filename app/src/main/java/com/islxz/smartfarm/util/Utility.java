@@ -40,6 +40,8 @@ public class Utility {
         return new Gson().fromJson(response, Control.class);
     }
 
+    private static int temp;
+
     /**
      * 控制开关
      *
@@ -49,7 +51,6 @@ public class Utility {
      * @param context
      */
     public static void openOrShut(String name, Control control, String ip, Context context) {
-        int temp;
         switch (name) {
             case "Blower":
                 if (control.getBlower() == 0)
@@ -141,9 +142,12 @@ public class Utility {
         }
     }
 
+    private static int p1;
+    private static int p2;
+
     public static int priorityLevel(int temp1, int min1, int max1, int temp2, int min2, int max2) {
-        int p1 = priorityLevel(temp1, min1, max1);
-        int p2 = priorityLevel(temp2, min2, max2);
+        p1 = priorityLevel(temp1, min1, max1);
+        p2 = priorityLevel(temp2, min2, max2);
         if (p1 == 3 || p2 == 3) {
             return 3;
         } else {
