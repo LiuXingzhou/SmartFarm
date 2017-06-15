@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/setting_backgroud"
     tools:context="com.islxz.smartfarm.activity.SecondActivity">
 
     <RelativeLayout

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.islxz.smartfarm.R;
-import com.islxz.smartfarm.activity.MainActivity;
 import com.islxz.smartfarm.activity.SecondActivity;
 
 /**
@@ -52,7 +51,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 intent.putExtra("select", 5);
                 break;
             case R.id.fset_rl_exit:
-                getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
                 getActivity().finish();
                 break;
         }

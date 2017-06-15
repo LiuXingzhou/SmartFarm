@@ -204,6 +204,22 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                         if (mAirFragment != null)
                             mAirFragment.showView(sensor, config, control);
                         break;
+                    case 6:
+                        if (mCO2ControlFragment != null)
+                            mCO2ControlFragment.showView(sensor, config);
+                        break;
+                    case 7:
+                        if (mLightControlFragment != null)
+                            mLightControlFragment.showView(sensor, config);
+                        break;
+                    case 8:
+                        if (mAirControlFragment != null)
+                            mAirControlFragment.showView(sensor, config);
+                        break;
+                    case 9:
+                        if (mSoilControlFragment != null)
+                            mSoilControlFragment.showView(sensor, config);
+                        break;
                 }
             }
         }

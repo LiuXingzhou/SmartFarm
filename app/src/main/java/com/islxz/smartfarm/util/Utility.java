@@ -8,10 +8,15 @@ import com.islxz.smartfarm.gson.Control;
 import com.islxz.smartfarm.gson.Sensor;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+
+import static android.R.attr.max;
+import static android.R.attr.min;
+import static android.R.attr.name;
 
 /**
  * Created by Qingsu on 2017/6/14.
@@ -121,6 +126,92 @@ public class Utility {
 
                             }
                         });
+                break;
+        }
+    }
+
+    /**
+     * 设置传感器的告警值范围
+     *
+     * @param name
+     * @param min
+     * @param max
+     * @param ip
+     * @param context
+     */
+    public static void setConfig(List<String> list, Context context) {
+        switch (list.get(0)) {
+            case "co2":
+                HttpUtil.sendOkHttpRequest(HttpUrl.HTTP_URL + list.get(3) + HttpUrl.SET_CONFIG_URL,
+                        "{'minCo2':" + list.get(1) + ",'maxCo2':" + list.get(2) + "}", new
+                                Callback() {
+
+                                    @Override
+                                    public void onFailure(Call call, IOException e) {
+
+                                    }
+
+                                    @Override
+                                    public void onResponse(Call call, Response response) throws
+                                            IOException {
+
+                                    }
+                                });
+                break;
+            case "light":
+                HttpUtil.sendOkHttpRequest(HttpUrl.HTTP_URL + list.get(3) + HttpUrl.SET_CONFIG_URL,
+                        "{'minLight':" + list.get(1) + ",'maxLight':" + list.get(2) + "}", new
+                                Callback() {
+
+                                    @Override
+                                    public void onFailure(Call call, IOException e) {
+
+                                    }
+
+                                    @Override
+                                    public void onResponse(Call call, Response response) throws
+                                            IOException {
+
+                                    }
+                                });
+                break;
+            case "air":
+                HttpUtil.sendOkHttpRequest(HttpUrl.HTTP_URL + list.get(5) + HttpUrl.SET_CONFIG_URL,
+                        "{'minAirTemperature':" + list.get(1) + ",'maxAirTemperature':" + list.get(2)
+                                + ",'minAirHumidity':" + list.get(3) + ",'maxAirHumidity':" + list.get
+                                (4) + "}", new
+                                Callback() {
+
+                                    @Override
+                                    public void onFailure(Call call, IOException e) {
+
+                                    }
+
+                                    @Override
+                                    public void onResponse(Call call, Response response) throws
+                                            IOException {
+
+                                    }
+                                });
+                break;
+            case "soil":
+                HttpUtil.sendOkHttpRequest(HttpUrl.HTTP_URL + list.get(5) + HttpUrl.SET_CONFIG_URL,
+                        "{'minSoilTemperature':" + list.get(1) + ",'maxSoilTemperature':" + list.get(2)
+                                + ",'minSoilHumidity':" + list.get(3) + ",'maxSoilHumidity':" + list.get
+                                (4) + "}", new
+                                Callback() {
+
+                                    @Override
+                                    public void onFailure(Call call, IOException e) {
+
+                                    }
+
+                                    @Override
+                                    public void onResponse(Call call, Response response) throws
+                                            IOException {
+
+                                    }
+                                });
                 break;
         }
     }
