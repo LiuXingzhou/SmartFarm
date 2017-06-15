@@ -1,6 +1,8 @@
 package com.islxz.smartfarm.util;
 
+import android.app.Activity;
 import android.content.Context;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.islxz.smartfarm.gson.Config;
@@ -14,6 +16,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+import static android.R.attr.breadCrumbShortTitle;
 import static android.R.attr.max;
 import static android.R.attr.min;
 import static android.R.attr.name;
@@ -55,7 +58,7 @@ public class Utility {
      * @param ip
      * @param context
      */
-    public static void openOrShut(String name, Control control, String ip, Context context) {
+    public static void openOrShut(String name, Control control, String ip, final Activity activity) {
         switch (name) {
             case "Blower":
                 if (control.getBlower() == 0)
@@ -66,12 +69,18 @@ public class Utility {
                         "{'Blower':" + temp + "}", new Callback() {
                             @Override
                             public void onFailure(Call call, IOException e) {
-
+                                doToast(-1, activity);
                             }
 
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
-
+                                if (handleControlResponse(response.body().string()).getResult().equals
+                                        ("failed"))
+                                    doToast(0, activity);
+                                if (temp == 0)
+                                    doToast(2, activity);
+                                else
+                                    doToast(1, activity);
                             }
                         });
                 break;
@@ -84,10 +93,18 @@ public class Utility {
                         "{'Roadlamp':" + temp + "}", new Callback() {
                             @Override
                             public void onFailure(Call call, IOException e) {
+                                doToast(-1, activity);
                             }
 
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
+                                if (handleControlResponse(response.body().string()).getResult().equals
+                                        ("failed"))
+                                    doToast(0, activity);
+                                if (temp == 0)
+                                    doToast(2, activity);
+                                else
+                                    doToast(1, activity);
                             }
                         });
                 break;
@@ -100,12 +117,18 @@ public class Utility {
                         "{'WaterPump':" + temp + "}", new Callback() {
                             @Override
                             public void onFailure(Call call, IOException e) {
-
+                                doToast(-1, activity);
                             }
 
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
-
+                                if (handleControlResponse(response.body().string()).getResult().equals
+                                        ("failed"))
+                                    doToast(0, activity);
+                                if (temp == 0)
+                                    doToast(2, activity);
+                                else
+                                    doToast(1, activity);
                             }
                         });
                 break;
@@ -118,28 +141,53 @@ public class Utility {
                         "{'Buzzer':" + temp + "}", new Callback() {
                             @Override
                             public void onFailure(Call call, IOException e) {
-
+                                doToast(-1, activity);
                             }
 
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
-
+                                if (handleControlResponse(response.body().string()).getResult().equals
+                                        ("failed"))
+                                    doToast(0, activity);
+                                if (temp == 0)
+                                    doToast(2, activity);
+                                else
+                                    doToast(1, activity);
                             }
                         });
                 break;
         }
     }
 
+    private static void doToast(final int arg0, final Activity activity) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                switch (arg0) {
+                    case -1:
+                        Toast.makeText(activity, "网络连接失败", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 0:
+                        Toast.makeText(activity, "操作失败", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Toast.makeText(activity, "打开成功", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(activity, "关闭成功", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        Toast.makeText(activity, "设置成功", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+    }
+
     /**
      * 设置传感器的告警值范围
-     *
-     * @param name
-     * @param min
-     * @param max
-     * @param ip
-     * @param context
      */
-    public static void setConfig(List<String> list, Context context) {
+    public static void setConfig(List<String> list, final Activity activity) {
         switch (list.get(0)) {
             case "co2":
                 HttpUtil.sendOkHttpRequest(HttpUrl.HTTP_URL + list.get(3) + HttpUrl.SET_CONFIG_URL,
@@ -148,13 +196,18 @@ public class Utility {
 
                                     @Override
                                     public void onFailure(Call call, IOException e) {
-
+                                        doToast(-1, activity);
                                     }
 
                                     @Override
                                     public void onResponse(Call call, Response response) throws
                                             IOException {
-
+                                        if (handleControlResponse(response.body().string()).getResult
+                                                ().equals
+                                                ("failed"))
+                                            doToast(0, activity);
+                                        else
+                                            doToast(3, activity);
                                     }
                                 });
                 break;
@@ -165,13 +218,18 @@ public class Utility {
 
                                     @Override
                                     public void onFailure(Call call, IOException e) {
-
+                                        doToast(-1, activity);
                                     }
 
                                     @Override
                                     public void onResponse(Call call, Response response) throws
                                             IOException {
-
+                                        if (handleControlResponse(response.body().string()).getResult
+                                                ().equals
+                                                ("failed"))
+                                            doToast(0, activity);
+                                        else
+                                            doToast(3, activity);
                                     }
                                 });
                 break;
@@ -184,13 +242,18 @@ public class Utility {
 
                                     @Override
                                     public void onFailure(Call call, IOException e) {
-
+                                        doToast(-1, activity);
                                     }
 
                                     @Override
                                     public void onResponse(Call call, Response response) throws
                                             IOException {
-
+                                        if (handleControlResponse(response.body().string()).getResult
+                                                ().equals
+                                                ("failed"))
+                                            doToast(0, activity);
+                                        else
+                                            doToast(3, activity);
                                     }
                                 });
                 break;
@@ -203,13 +266,18 @@ public class Utility {
 
                                     @Override
                                     public void onFailure(Call call, IOException e) {
-
+                                        doToast(-1, activity);
                                     }
 
                                     @Override
                                     public void onResponse(Call call, Response response) throws
                                             IOException {
-
+                                        if (handleControlResponse(response.body().string()).getResult
+                                                ().equals
+                                                ("failed"))
+                                            doToast(0, activity);
+                                        else
+                                            doToast(3, activity);
                                     }
                                 });
                 break;

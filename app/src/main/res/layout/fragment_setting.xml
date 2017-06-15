@@ -42,11 +42,13 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginLeft="6dp"
             android:background="@color/parting_line"/>
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/fset_rl_clean"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white">
@@ -84,11 +86,13 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginLeft="6dp"
             android:background="@color/parting_line"/>
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/fset_rl_update"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white">
@@ -126,6 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginLeft="6dp"
             android:background="@color/parting_line"/>
 
     </RelativeLayout>
@@ -180,6 +185,18 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/parting_line"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/parting_line"/>
 
         <ImageView
             android:id="@+id/fset_iv5"

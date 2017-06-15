@@ -71,12 +71,12 @@ public class AirFragment extends Fragment implements View.OnClickListener {
 
     public void showView(Sensor sensor, Config config, Control control) {
         if (sensor != null) {
-            mTemTextView1.setText("当前空气温度：" + sensor.getAirTemperature());
+            mTemTextView1.setText("当前空气温度：" + sensor.getAirTemperature() + "℃");
             mHumTextView1.setText("当前空气湿度：" + sensor.getAirHumidity());
         }
         if (config != null) {
             mTemTextView2.setText("温度设定范围：" + config.getMinAirTemperature() + "~~" + config
-                    .getMaxAirTemperature());
+                    .getMaxAirTemperature() + "℃");
             mHumTextView2.setText("湿度设定范围：" + config.getMinAirHumidity() + "~~" + config
                     .getMaxAirHumidity());
         }
@@ -107,13 +107,13 @@ public class AirFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fa_ib_blower:
-                Utility.openOrShut("Blower", mControl, ip, getContext());
+                Utility.openOrShut("Blower", mControl, ip, getActivity());
                 break;
             case R.id.fa_ib_water_pump:
-                Utility.openOrShut("WaterPump", mControl, ip, getContext());
+                Utility.openOrShut("WaterPump", mControl, ip, getActivity());
                 break;
             case R.id.fa_ib_buzzer:
-                Utility.openOrShut("Buzzer", mControl, ip, getContext());
+                Utility.openOrShut("Buzzer", mControl, ip, getActivity());
                 break;
         }
     }

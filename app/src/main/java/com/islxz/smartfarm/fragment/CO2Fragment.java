@@ -89,10 +89,10 @@ public class CO2Fragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fc_ib_blower:
-                Utility.openOrShut("Blower", mControl, ip, getContext());
+                Utility.openOrShut("Blower", mControl, ip, getActivity());
                 break;
             case R.id.fc_ib_buzzer:
-                Utility.openOrShut("Buzzer", mControl, ip, getContext());
+                Utility.openOrShut("Buzzer", mControl, ip, getActivity());
                 break;
         }
     }

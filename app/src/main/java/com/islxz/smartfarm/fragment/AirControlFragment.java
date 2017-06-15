@@ -87,7 +87,7 @@ public class AirControlFragment extends Fragment {
                     list.add(mHumMinEdit.getText().toString());
                     list.add(mHumMaxEdit.getText().toString());
                     list.add(ip);
-                    Utility.setConfig(list, getContext());
+                    Utility.setConfig(list, getActivity());
                     startActivity(new Intent(getActivity(), SecondActivity.class).putExtra("select", 4));
                     getActivity().finish();
                 }

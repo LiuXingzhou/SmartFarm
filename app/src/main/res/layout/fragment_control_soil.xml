@@ -67,6 +67,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginLeft="6dp"
             android:background="@color/parting_line"/>
 
         <LinearLayout
@@ -120,7 +121,6 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="10dp"
             android:background="@color/parting_line"/>
     </LinearLayout>
 
@@ -178,6 +178,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginLeft="6dp"
             android:background="@color/parting_line"/>
 
         <LinearLayout

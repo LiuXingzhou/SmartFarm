@@ -89,10 +89,10 @@ public class LightFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fl_ib_road_lamp:
-                Utility.openOrShut("Roadlamp", mControl, ip, getContext());
+                Utility.openOrShut("Roadlamp", mControl, ip, getActivity());
                 break;
             case R.id.fl_ib_buzzer:
-                Utility.openOrShut("Buzzer", mControl, ip, getContext());
+                Utility.openOrShut("Buzzer", mControl, ip, getActivity());
                 break;
         }
     }

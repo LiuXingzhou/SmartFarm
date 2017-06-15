@@ -72,12 +72,12 @@ public class SoilFragment extends Fragment implements View.OnClickListener {
 
     public void showView(Sensor sensor, Config config, Control control) {
         if (sensor != null) {
-            mTemTextView1.setText("当前土壤温度：" + sensor.getSoilTemperature());
+            mTemTextView1.setText("当前土壤温度：" + sensor.getSoilTemperature() + "℃");
             mHumTextView1.setText("当前土壤湿度：" + sensor.getSoilHumidity());
         }
         if (config != null) {
             mTemTextView2.setText("温度设定范围：" + config.getMinSoilTemperature() + "~~" + config
-                    .getMaxSoilTemperature());
+                    .getMaxSoilTemperature() + "℃");
             mHumTextView2.setText("湿度设定范围：" + config.getMinSoilHumidity() + "~~" + config
                     .getMaxSoilHumidity());
         }
@@ -108,13 +108,13 @@ public class SoilFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fs_ib_road_lamp:
-                Utility.openOrShut("Roadlamp", mControl, ip, getContext());
+                Utility.openOrShut("Roadlamp", mControl, ip, getActivity());
                 break;
             case R.id.fs_ib_water_pump:
-                Utility.openOrShut("WaterPump", mControl, ip, getContext());
+                Utility.openOrShut("WaterPump", mControl, ip, getActivity());
                 break;
             case R.id.fs_ib_buzzer:
-                Utility.openOrShut("Buzzer", mControl, ip, getContext());
+                Utility.openOrShut("Buzzer", mControl, ip, getActivity());
                 break;
         }
     }

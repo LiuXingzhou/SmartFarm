@@ -75,7 +75,7 @@ public class CO2ControlFragment extends Fragment {
                     list.add(mMinEdit.getText().toString());
                     list.add(mMaxEdit.getText().toString());
                     list.add(ip);
-                    Utility.setConfig(list, getContext());
+                    Utility.setConfig(list, getActivity());
                     startActivity(new Intent(getActivity(), SecondActivity.class).putExtra("select", 4));
                     getActivity().finish();
                 }

@@ -17,6 +17,7 @@ public class Control {
     private int WaterPump;
     private int Roadlamp;
     private int Blower;
+    private String result;
 
     public int getBuzzer() {
         return Buzzer;
@@ -48,5 +49,13 @@ public class Control {
 
     public void setBlower(int Blower) {
         this.Blower = Blower;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 }

@@ -173,6 +173,27 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        switch (current) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                finish();
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                startActivity(new Intent(this, SecondActivity.class).putExtra("select", 4));
+                finish();
+                break;
+        }
+    }
+
     private class MyBroadcast extends BroadcastReceiver {
 
         @Override
