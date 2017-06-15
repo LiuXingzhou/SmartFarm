@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.islxz.smartfarm.R;
 import com.islxz.smartfarm.fragment.HelpFragment;
@@ -51,6 +53,25 @@ public class SmartFarmActivity extends AppCompatActivity implements View.OnClick
 
     private Intent mServiceIntent;
     private MyBroadcast mMyBroadcast;
+
+    private boolean isExit = false;
+    private android.os.Handler myHandler = new android.os.Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            isExit = false;
+        }
+    };
+
+    @Override
+    public void onBackPressed() {
+        if (!isExit) {
+            isExit = true;
+            myHandler.sendEmptyMessageDelayed(0, 2000);
+            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+        } else
+            finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

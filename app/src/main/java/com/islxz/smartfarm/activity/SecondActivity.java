@@ -61,7 +61,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         Intent intent = getIntent();
-        current = intent.getIntExtra("select", 0);
+        current = intent.getIntExtra("select", -1);
         mMyBroadcast = new MyBroadcast();
         IntentFilter intentFilter = new IntentFilter(HttpUrl.REFRESH_OK);
         intentFilter.addAction(HttpUrl.REFRESH_ERROR);

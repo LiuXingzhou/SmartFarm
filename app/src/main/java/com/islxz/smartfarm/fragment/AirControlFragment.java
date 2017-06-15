@@ -72,12 +72,12 @@ public class AirControlFragment extends Fragment {
         mRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Integer.parseInt(mTemMinEdit.getText().toString()) >= Integer.parseInt(mTemMaxEdit
-                        .getText()
-                        .toString()) || Integer.parseInt(mHumMinEdit.getText().toString()) >= Integer
-                        .parseInt(mHumMaxEdit
-                                .getText()
-                                .toString())) {
+                if (mTemMinEdit.getText().toString().equals("") || mTemMaxEdit.getText().toString()
+                        .equals("") || mHumMinEdit.getText().toString().equals("") || mHumMaxEdit
+                        .getText().toString().equals("") || Integer.parseInt(mTemMinEdit.getText()
+                        .toString()) >= Integer.parseInt(mTemMaxEdit.getText().toString()) || Integer
+                        .parseInt(mHumMinEdit.getText().toString()) >= Integer.parseInt(mHumMaxEdit
+                        .getText().toString())) {
                     Toast.makeText(getContext(), "输入数据错误", Toast.LENGTH_SHORT).show();
                 } else {
                     List<String> list = new ArrayList<String>();

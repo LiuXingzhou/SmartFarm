@@ -65,9 +65,9 @@ public class CO2ControlFragment extends Fragment {
         mRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Integer.parseInt(mMinEdit.getText().toString()) >= Integer.parseInt(mMaxEdit
-                        .getText()
-                        .toString())) {
+                if (mMinEdit.getText().toString().equals("") || mMaxEdit.getText().toString().equals
+                        ("") || Integer.parseInt(mMinEdit.getText().toString()) >= Integer.parseInt
+                        (mMaxEdit.getText().toString())) {
                     Toast.makeText(getContext(), "输入数据错误", Toast.LENGTH_SHORT).show();
                 } else {
                     List<String> list = new ArrayList<String>();

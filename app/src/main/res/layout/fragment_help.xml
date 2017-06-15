@@ -16,8 +16,8 @@
 
     <TextView
         android:id="@+id/fhp_tv2"
-        android:layout_width="220dp"
-        android:layout_height="30dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_below="@id/fhp_tv1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -39,8 +39,8 @@
 
     <TextView
         android:id="@+id/fhp_tv3"
-        android:layout_width="220dp"
-        android:layout_height="30dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_below="@id/fhp_iv1"
         android:layout_centerHorizontal="true"
         android:background="@drawable/text_background"
@@ -61,8 +61,8 @@
 
     <TextView
         android:id="@+id/fhp_tv4"
-        android:layout_width="220dp"
-        android:layout_height="30dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_below="@id/fhp_iv2"
         android:layout_centerHorizontal="true"
         android:background="@drawable/text_background"
@@ -83,8 +83,8 @@
 
     <TextView
         android:id="@+id/fhp_tv5"
-        android:layout_width="220dp"
-        android:layout_height="30dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_below="@id/fhp_iv3"
         android:layout_centerHorizontal="true"
         android:background="@drawable/text_background"

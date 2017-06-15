@@ -128,7 +128,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     mConfig.getMinSoilHumidity(),
                     mConfig.getMaxSoilHumidity()));
             changeImage(3, Utility.priorityLevel(mSensor.getAirTemperature(), mConfig
-                    .getMinAirTemperature(), mConfig.getMaxAirTemperature(), mSensor.getAirHumidity(),
+                            .getMinAirTemperature(), mConfig.getMaxAirTemperature(), mSensor
+                            .getAirHumidity(),
                     mConfig.getMinAirHumidity(), mConfig.getMaxAirHumidity()));
         }
     }

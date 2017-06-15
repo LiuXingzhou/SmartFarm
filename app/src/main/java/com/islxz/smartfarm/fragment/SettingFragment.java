@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.islxz.smartfarm.R;
 import com.islxz.smartfarm.activity.SecondActivity;
@@ -19,6 +20,8 @@ import com.islxz.smartfarm.activity.SecondActivity;
 public class SettingFragment extends Fragment implements View.OnClickListener {
 
     private RelativeLayout mSmartControlRL;
+    private RelativeLayout mCleanRL;
+    private RelativeLayout mUpdateRL;
     private RelativeLayout mAboutRL;
     private RelativeLayout mExitRL;
 
@@ -33,9 +36,13 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
 
     private void bindID(View view) {
         mSmartControlRL = view.findViewById(R.id.fset_rl_smart_control);
+        mCleanRL = view.findViewById(R.id.fset_rl_clean);
+        mUpdateRL = view.findViewById(R.id.fset_rl_update);
         mAboutRL = view.findViewById(R.id.fset_rl_about);
         mExitRL = view.findViewById(R.id.fset_rl_exit);
         mSmartControlRL.setOnClickListener(this);
+        mCleanRL.setOnClickListener(this);
+        mUpdateRL.setOnClickListener(this);
         mAboutRL.setOnClickListener(this);
         mExitRL.setOnClickListener(this);
     }
@@ -47,12 +54,18 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
             case R.id.fset_rl_smart_control:
                 intent.putExtra("select", 4);
                 break;
+            case R.id.fset_rl_clean:
+                Toast.makeText(getContext(), "清除失败", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.fset_rl_update:
+                Toast.makeText(getContext(), "已安装最新版本", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.fset_rl_about:
                 intent.putExtra("select", 5);
                 break;
             case R.id.fset_rl_exit:
                 getActivity().finish();
-                break;
+                return;
         }
         getActivity().startActivity(intent);
     }
