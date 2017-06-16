@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 
 import com.islxz.smartfarm.R;
 import com.islxz.smartfarm.activity.SecondActivity;
-import com.islxz.smartfarm.util.Utility;
 
 /**
  * Created by Qingsu on 2017/6/15.
@@ -31,12 +30,6 @@ public class SmartControlFragment extends Fragment implements View.OnClickListen
         View view = inflater.inflate(R.layout.fragment_smart_control, null);
         bindID(view);
         return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Utility.startService(getActivity());
     }
 
     private void bindID(View view) {

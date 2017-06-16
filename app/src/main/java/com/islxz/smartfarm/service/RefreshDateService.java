@@ -58,17 +58,22 @@ public class RefreshDateService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.e("Service", "onStartCommand()");
+        getSensorDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_SENSOR_ULR);
+        getConfigDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONFIG_URL);
+        getControlDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONTROL_URL);
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                for (int i = 0; i < 3; i++) {
+                    getSensorDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_SENSOR_ULR);
+                    getConfigDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONFIG_URL);
+                    getControlDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONTROL_URL);
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-                getSensorDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_SENSOR_ULR);
-                getConfigDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONFIG_URL);
-                getControlDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONTROL_URL);
             }
         }).start();
         return super.onStartCommand(intent, flags, startId);

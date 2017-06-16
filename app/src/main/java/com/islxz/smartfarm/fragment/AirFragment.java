@@ -47,6 +47,7 @@ public class AirFragment extends Fragment implements View.OnClickListener {
         mSharedPreferences = getActivity().getSharedPreferences("config", MODE_PRIVATE);
         ip = mSharedPreferences.getString("ip", "");
         bindID(view);
+        Utility.startService(getActivity());
         return view;
     }
 

@@ -57,6 +57,7 @@ public class SoilControlFragment extends Fragment {
         mSharedPreferences = getActivity().getSharedPreferences("config", MODE_PRIVATE);
         ip = mSharedPreferences.getString("ip", "");
         bindID(view);
+        Utility.startService(getActivity());
         return view;
     }
 
