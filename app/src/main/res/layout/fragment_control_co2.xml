@@ -40,7 +40,7 @@
                 android:id="@+id/fcco2_tv_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="130"
+                android:text="--"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/label_text_size"/>
 

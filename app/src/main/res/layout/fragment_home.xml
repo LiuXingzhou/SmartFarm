@@ -123,7 +123,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="500-1000"
+                            android:text="null-null"
                             android:textColor="@color/hui_text_color"
                             android:textSize="@dimen/label_text_size"/>
                     </LinearLayout>
@@ -237,7 +237,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="500-1000"
+                            android:text="null-null"
                             android:textColor="@color/hui_text_color"
                             android:textSize="@dimen/label_text_size"/>
                     </LinearLayout>
@@ -376,7 +376,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="0~90℃"
+                                android:text="null~null℃"
                                 android:textColor="@color/hui_text_color"
                                 android:textSize="@dimen/label_text_size"/>
                         </LinearLayout>
@@ -402,7 +402,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="0~90"
+                                android:text="null~null"
                                 android:textColor="@color/hui_text_color"
                                 android:textSize="@dimen/label_text_size"/>
                         </LinearLayout>
@@ -542,7 +542,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="0~90℃"
+                                android:text="null~null℃"
                                 android:textColor="@color/hui_text_color"
                                 android:textSize="@dimen/label_text_size"/>
                         </LinearLayout>
@@ -568,7 +568,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="0~90"
+                                android:text="null~null"
                                 android:textColor="@color/hui_text_color"
                                 android:textSize="@dimen/label_text_size"/>
                         </LinearLayout>
