@@ -79,6 +79,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         bindID(view);
         initViewPager(inflater);
         startPlay();
+        Utility.startService(getActivity());
         return view;
     }
 

@@ -55,6 +55,12 @@ public class LightControlFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Utility.startService(getActivity());
+    }
+
     private void bindID(View view) {
         mLightTV = view.findViewById(R.id.fcl_tv_num);
         mPriIV = view.findViewById(R.id.fcl_iv_p);

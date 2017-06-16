@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.islxz.smartfarm.util.HttpUrl;
 import com.islxz.smartfarm.util.HttpUtil;
@@ -34,6 +35,8 @@ public class RefreshDateService extends Service {
     Intent intent = new Intent(HttpUrl.REFRESH_OK);
     Intent intent1 = new Intent(HttpUrl.REFRESH_ERROR);
 
+    static final RequestBody requestBody = new FormBody.Builder().add("username", "admin").build();
+
     @Nullable
     @Override
 
@@ -44,39 +47,41 @@ public class RefreshDateService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.e("Service", "onCreate()");
         mSharedPreferences = this.getSharedPreferences("config", MODE_PRIVATE);
         ip = mSharedPreferences.getString("ip", "");
+        reSensorDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_SENSOR_ULR);
+        reConfigDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONFIG_URL);
+        reControlDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONTROL_URL);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        reSensorDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_SENSOR_ULR);
-        reConfigDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONFIG_URL);
-        reControlDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONTROL_URL);
+        Log.e("Service", "onStartCommand()");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                getSensorDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_SENSOR_ULR);
+                getConfigDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONFIG_URL);
+                getControlDate(HttpUrl.HTTP_URL + ip + HttpUrl.GET_CONTROL_URL);
+            }
+        }).start();
         return super.onStartCommand(intent, flags, startId);
     }
 
     private void reSensorDate(final String address) {
-        final RequestBody requestBody = new FormBody.Builder().add("username", "admin").build();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 do {
-                    HttpUtil.sendOkHttpRequest(address, requestBody, new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            sendBroadcast(intent1);
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-                            mSensor = response.body().string();
-                            intent.putExtra("sensor", mSensor);
-                            sendBroadcast(intent);
-                        }
-                    });
+                    getSensorDate(address);
                     try {
-                        Thread.sleep(2000);
+                        Thread.sleep(2500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -85,28 +90,31 @@ public class RefreshDateService extends Service {
         }).start();
     }
 
+    private void getSensorDate(String address) {
+        HttpUtil.sendOkHttpRequest(address, requestBody, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                sendBroadcast(intent1);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                mSensor = response.body().string();
+                intent.putExtra("sensor", mSensor);
+                sendBroadcast(intent);
+            }
+        });
+    }
+
     private void reConfigDate(final String address) {
-        final RequestBody requestBody = new FormBody.Builder().add("username", "admin").build();
         final SharedPreferences sharedPreferences = mSharedPreferences;
         new Thread(new Runnable() {
             @Override
             public void run() {
                 do {
-                    HttpUtil.sendOkHttpRequest(address, requestBody, new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            sendBroadcast(intent1);
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-                            mConfig = response.body().string();
-                            intent.putExtra("config", mConfig);
-                            sendBroadcast(intent);
-                        }
-                    });
+                    getConfigDate(address);
                     try {
-                        Thread.sleep(2000);
+                        Thread.sleep(2500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -116,27 +124,30 @@ public class RefreshDateService extends Service {
 
     }
 
+    private void getConfigDate(String address) {
+        HttpUtil.sendOkHttpRequest(address, requestBody, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                sendBroadcast(intent1);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                mConfig = response.body().string();
+                intent.putExtra("config", mConfig);
+                sendBroadcast(intent);
+            }
+        });
+    }
+
     private void reControlDate(final String address) {
-        final RequestBody requestBody = new FormBody.Builder().add("username", "admin").build();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 do {
-                    HttpUtil.sendOkHttpRequest(address, requestBody, new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            sendBroadcast(intent1);
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-                            mControl = response.body().string();
-                            intent.putExtra("control", mControl);
-                            sendBroadcast(intent);
-                        }
-                    });
+                    getControlDate(address);
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(400);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -144,6 +155,22 @@ public class RefreshDateService extends Service {
             }
         }).start();
 
+    }
+
+    private void getControlDate(String address) {
+        HttpUtil.sendOkHttpRequest(address, requestBody, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                sendBroadcast(intent1);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                mControl = response.body().string();
+                intent.putExtra("control", mControl);
+                sendBroadcast(intent);
+            }
+        });
     }
 
     @Override

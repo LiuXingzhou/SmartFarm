@@ -46,6 +46,12 @@ public class CO2Fragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Utility.startService(getActivity());
+    }
+
     private void bindID(View view) {
         mTextView1 = view.findViewById(R.id.fc_tv_co2);
         mTextView2 = view.findViewById(R.id.fc_tv_min_max);

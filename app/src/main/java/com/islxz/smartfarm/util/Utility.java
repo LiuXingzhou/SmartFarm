@@ -1,13 +1,14 @@
 package com.islxz.smartfarm.util;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.islxz.smartfarm.gson.Config;
 import com.islxz.smartfarm.gson.Control;
 import com.islxz.smartfarm.gson.Sensor;
+import com.islxz.smartfarm.service.RefreshDateService;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,11 +16,6 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
-import static android.R.attr.breadCrumbShortTitle;
-import static android.R.attr.max;
-import static android.R.attr.min;
-import static android.R.attr.name;
 
 /**
  * Created by Qingsu on 2017/6/14.
@@ -50,13 +46,20 @@ public class Utility {
 
     private static int temp;
 
+    private static Intent mServiceIntent;
+
+    public static void startService(Activity activity) {
+        mServiceIntent = new Intent(activity, RefreshDateService.class);
+        activity.startService(mServiceIntent);
+    }
+
+    public static void stopService(Activity activity) {
+        if (mServiceIntent != null)
+            activity.stopService(mServiceIntent);
+    }
+
     /**
      * 控制开关
-     *
-     * @param name
-     * @param control
-     * @param ip
-     * @param context
      */
     public static void openOrShut(String name, Control control, String ip, final Activity activity) {
         switch (name) {
@@ -75,12 +78,14 @@ public class Utility {
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
                                 if (handleControlResponse(response.body().string()).getResult().equals
-                                        ("failed"))
+                                        ("failed")) {
                                     doToast(0, activity);
-                                if (temp == 0)
-                                    doToast(2, activity);
-                                else
-                                    doToast(1, activity);
+                                } else {
+                                    if (temp == 0)
+                                        doToast(2, activity);
+                                    else
+                                        doToast(1, activity);
+                                }
                             }
                         });
                 break;
@@ -99,12 +104,14 @@ public class Utility {
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
                                 if (handleControlResponse(response.body().string()).getResult().equals
-                                        ("failed"))
+                                        ("failed")) {
                                     doToast(0, activity);
-                                if (temp == 0)
-                                    doToast(2, activity);
-                                else
-                                    doToast(1, activity);
+                                } else {
+                                    if (temp == 0)
+                                        doToast(2, activity);
+                                    else
+                                        doToast(1, activity);
+                                }
                             }
                         });
                 break;
@@ -123,12 +130,14 @@ public class Utility {
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
                                 if (handleControlResponse(response.body().string()).getResult().equals
-                                        ("failed"))
+                                        ("failed")) {
                                     doToast(0, activity);
-                                if (temp == 0)
-                                    doToast(2, activity);
-                                else
-                                    doToast(1, activity);
+                                } else {
+                                    if (temp == 0)
+                                        doToast(2, activity);
+                                    else
+                                        doToast(1, activity);
+                                }
                             }
                         });
                 break;
@@ -147,12 +156,14 @@ public class Utility {
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
                                 if (handleControlResponse(response.body().string()).getResult().equals
-                                        ("failed"))
+                                        ("failed")) {
                                     doToast(0, activity);
-                                if (temp == 0)
-                                    doToast(2, activity);
-                                else
-                                    doToast(1, activity);
+                                } else {
+                                    if (temp == 0)
+                                        doToast(2, activity);
+                                    else
+                                        doToast(1, activity);
+                                }
                             }
                         });
                 break;
@@ -160,6 +171,13 @@ public class Utility {
     }
 
     private static void doToast(final int arg0, final Activity activity) {
+        if (arg0 != 3) {
+            try {
+                Thread.sleep(900);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {

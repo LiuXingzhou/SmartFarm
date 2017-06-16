@@ -51,6 +51,12 @@ public class SoilFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Utility.startService(getActivity());
+    }
+
     private void bindID(View view) {
         mTemTextView1 = view.findViewById(R.id.fs_tv_tem);
         mHumTextView1 = view.findViewById(R.id.fs_tv_hum);

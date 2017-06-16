@@ -56,6 +56,12 @@ public class CO2ControlFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Utility.startService(getActivity());
+    }
+
     private void bindID(View view) {
         mCO2TV = view.findViewById(R.id.fcco2_tv_num);
         mPriIV = view.findViewById(R.id.fcco2_iv_p);

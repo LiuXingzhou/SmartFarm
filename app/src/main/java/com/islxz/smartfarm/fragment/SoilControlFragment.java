@@ -60,6 +60,12 @@ public class SoilControlFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Utility.startService(getActivity());
+    }
+
     private void bindID(View view) {
         mTemTV = view.findViewById(R.id.fcs_tv_tem_num);
         mHumTV = view.findViewById(R.id.fcs_tv_hum_num);

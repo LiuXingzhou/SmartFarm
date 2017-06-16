@@ -24,7 +24,6 @@ import com.islxz.smartfarm.fragment.HomeFragment;
 import com.islxz.smartfarm.fragment.SettingFragment;
 import com.islxz.smartfarm.gson.Config;
 import com.islxz.smartfarm.gson.Sensor;
-import com.islxz.smartfarm.service.RefreshDateService;
 import com.islxz.smartfarm.util.HttpUrl;
 import com.islxz.smartfarm.util.Utility;
 
@@ -51,7 +50,6 @@ public class SmartFarmActivity extends AppCompatActivity implements View.OnClick
     private MyFragmentPagerAdapter mMyFragmentPagerAdapter;
     private FragmentManager mFragmentManager;
 
-    private Intent mServiceIntent;
     private MyBroadcast mMyBroadcast;
 
     private boolean isExit = false;
@@ -77,8 +75,6 @@ public class SmartFarmActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smart_farm);
-        mServiceIntent = new Intent(this, RefreshDateService.class);
-        startService(mServiceIntent);
         mMyBroadcast = new MyBroadcast();
         IntentFilter intentFilter = new IntentFilter(HttpUrl.REFRESH_OK);
         intentFilter.addAction(HttpUrl.REFRESH_ERROR);
@@ -123,12 +119,17 @@ public class SmartFarmActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Utility.startService(this);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
+        Utility.stopService(this);
         if (mMyBroadcast != null)
             unregisterReceiver(mMyBroadcast);
-        if (mServiceIntent != null)
-            stopService(mServiceIntent);
     }
 
     private void bindID() {
