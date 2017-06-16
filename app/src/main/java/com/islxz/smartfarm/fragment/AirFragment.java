@@ -82,9 +82,9 @@ public class AirFragment extends Fragment implements View.OnClickListener {
             mHumTextView1.setText("当前空气湿度：" + sensor.getAirHumidity());
         }
         if (config != null) {
-            mTemTextView2.setText("温度设定范围：" + config.getMinAirTemperature() + "~~" + config
+            mTemTextView2.setText("温度设定范围：" + config.getMinAirTemperature() + "~" + config
                     .getMaxAirTemperature() + "℃");
-            mHumTextView2.setText("湿度设定范围：" + config.getMinAirHumidity() + "~~" + config
+            mHumTextView2.setText("湿度设定范围：" + config.getMinAirHumidity() + "~" + config
                     .getMaxAirHumidity());
         }
         if (control != null) {

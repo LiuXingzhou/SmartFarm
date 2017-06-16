@@ -82,9 +82,9 @@ public class SoilFragment extends Fragment implements View.OnClickListener {
             mHumTextView1.setText("当前土壤湿度：" + sensor.getSoilHumidity());
         }
         if (config != null) {
-            mTemTextView2.setText("温度设定范围：" + config.getMinSoilTemperature() + "~~" + config
+            mTemTextView2.setText("温度设定范围：" + config.getMinSoilTemperature() + "~" + config
                     .getMaxSoilTemperature() + "℃");
-            mHumTextView2.setText("湿度设定范围：" + config.getMinSoilHumidity() + "~~" + config
+            mHumTextView2.setText("湿度设定范围：" + config.getMinSoilHumidity() + "~" + config
                     .getMaxSoilHumidity());
         }
         if (control != null) {
