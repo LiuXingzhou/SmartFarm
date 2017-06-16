@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             } else {
                 Toast.makeText(this, "IP地址格式错误", Toast.LENGTH_SHORT).show();
             }

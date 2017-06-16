@@ -162,6 +162,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             case 4:
             case 5:
                 finish();
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
             case 6:
             case 7:
@@ -169,6 +170,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             case 9:
                 startActivity(new Intent(this, SecondActivity.class).putExtra("select", 4));
                 finish();
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
         }
     }
@@ -183,6 +185,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             case 4:
             case 5:
                 finish();
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
             case 6:
             case 7:
@@ -190,6 +193,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             case 9:
                 startActivity(new Intent(this, SecondActivity.class).putExtra("select", 4));
                 finish();
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
         }
     }
