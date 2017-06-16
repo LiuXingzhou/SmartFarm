@@ -56,10 +56,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.fset_rl_clean:
                 Toast.makeText(getContext(), "清除失败", Toast.LENGTH_SHORT).show();
-                break;
+                return;
             case R.id.fset_rl_update:
                 Toast.makeText(getContext(), "已安装最新版本", Toast.LENGTH_SHORT).show();
-                break;
+                return;
             case R.id.fset_rl_about:
                 intent.putExtra("select", 5);
                 break;
